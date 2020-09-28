@@ -9,5 +9,9 @@ talk = ['Hi there!', 'Hi!','Hello!', 'My name is Lily',
         'Sorry to hear that.']
 
 list_trainer = ListTrainer(my_bot)
-for item in (talk):
-    list_trainer.train(item)
+list_trainer.train(talk)
+while True:
+    text = input('Type a message...\n')
+    reply = chatbot.get_response(text)
+    print('Lily:', reply)
+    
