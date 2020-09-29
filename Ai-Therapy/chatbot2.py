@@ -1,17 +1,27 @@
-from chatterbot import ChatBot
+import json
+
+data = json.loads(open('intents.json', 'r').read())
+
+train = []
+
+for intent in data["intents"]:
+	for pattern in intent["patterns"]:
+		train.append(pattern)
+	for response in intent["responses"]:
+		train.append(response)
+
+from chatterbot import ChatBot 
 from chatterbot.trainers import ListTrainer
 
-my_bot = ChatBot('Lily')
+# Create a new chatbot name Lily
+chatbot = ChatBot('Lily')
 
-talk = ['Hi there!', 'Hi!','Hello!', 'My name is Lily',
-        'I am doing great, you?', 'I\'m doing well, thanks for asking',
-        'excellent, glad to hear that.',
-        'Sorry to hear that.']
+trainers = ListTrainer(chatbot)
 
-list_trainer = ListTrainer(my_bot)
-list_trainer.train(talk)
+trainers.train(train)
+
 while True:
-    text = input('Type a message...\n')
-    reply = chatbot.get_response(text)
-    print('Lily:', reply)
+	text = input('Type a message...\n')
+	reply = chatbot.get_response(text)
+	print('Lily:', reply)
     
