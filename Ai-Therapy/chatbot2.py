@@ -1,27 +1,23 @@
-import json
-
-data = json.loads(open('intents.json', 'r').read())
-
-train = []
-
-for intent in data["intents"]:
-	for pattern in intent["patterns"]:
-		train.append(pattern)
-	for response in intent["responses"]:
-		train.append(response)
-
-from chatterbot import ChatBot 
+#import files
+from flask import Flask, render_template, request
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot.trainers import ListTrainer
 
-# Create a new chatbot name Lily
-chatbot = ChatBot('Lily')
+app = Flask(__name__)
 
-trainers = ListTrainer(chatbot)
+bot = ChatBot("Lily")
+bot.set_trainer(ListTrainer)
+bot.set_trainer(ChatterBotCorpusTrainer)
+bot.train("chatterbot.corpus.english")
 
-trainers.train(train)
-
-while True:
-	text = input('Type a message...\n')
-	reply = chatbot.get_response(text)
-	print('Lily:', reply)
+@app.route("/")
+def home():    
+    return render_template("chat.html") 
+@app.route("/get")
+def get_bot_response():    
+    userText = request.args.get('msg')    
+    return str(bot.get_response(userText)) 
+if __name__ == "__main__":    
+    app.run()
     
