@@ -1,85 +1,131 @@
-<head>
-  <link
-    rel="shortcut icon"
-    type="image/x-icon"
-    href="https://user-images.githubusercontent.com/20112458/49326597-773b7280-f57a-11e8-853d-20ed61d18b0d.png"
-  />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <style>
-    body {
-      font-family: monospace;
-    }
-    h1 {
-      background-color: yellow;
-      display: inline-block;
-      font-size: 3em;
-      margin: 0;
-      padding: 14px;
-    }
-    h3 {
-      color: black;
-      font-size: 20px;
-      margin-top: 3px;
-      text-align: center;
-    }
-    #chatbox {
-      margin-left: auto;
-      margin-right: auto;
-      width: 40%;
-      margin-top: 60px;
-    }
-    #userInput {
-      margin-left: auto;
-      margin-right: auto;
-      width: 40%;
-      margin-top: 60px;
-    }
-    #textInput {
-      width: 90%;
-      border: none;
-      border-bottom: 3px solid black;
-      font-family: monospace;
-      font-size: 17px;
-    }
-    .userText {
-      color: white;
-      font-family: monospace;
-      font-size: 17px;
-      text-align: right;
-      line-height: 30px;
-    }
-    .userText span {
-      background-color: #808080;
-      padding: 10px;
-      border-radius: 2px;
-    }
-    .botText {
-      color: white;
-      font-family: monospace;
-      font-size: 17px;
-      text-align: left;
-      line-height: 30px;
-    }
-    .botText span {
-      background-color: #4169e1;
-      padding: 10px;
-      border-radius: 2px;
-    }
-    #tidbit {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 300px;
-    }
-    .boxed {
-      margin-left: auto;
-      margin-right: auto;
-      width: 78%;
-      margin-top: 60px;
-      border: 1px solid green;
-    }
-    .box {
-      border: 2px solid black;
-    }
-  </style>
-</head>
+<html>
+<title>chatbot</title>	
+
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 50px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 40px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.chat-box{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.box{
+    transition: height 1s ease-out;
+    width: 450px;
+    height: 0px;
+    background: rgb(255, 255, 255);
+    z-index: 9999;
+}
+.open:hover>.box{
+  height:500px;
+      transition: height 1s ease-out;
+}
+.open {
+    text-align: center;
+    font-size: 30px;
+    border: 2px solid #000107;
+    background: #111;
+    color: #818181;
+}
+
+</style>
+
+<h1 style="text-align:center; font-size:40px;">Ask Me Any Question You Have</h1>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Home page</a>
+    <a href="#">COIVD-19 Cases By Zipcode</a>
+    <a href="#">Job Search</a>
+    <a href="#">Contact us</a>
+  </div>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "350px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+<img SRC="https://pro2-bar-s3-cdn-cf.myportfolio.com/cd563a40abc7237b6824a624776eb26d/102d262e-2af0-4da5-9c55-8e434b35a875.gif?h=c5cbc013320b9b4a93d3ebd9e3807919" class="center">
+
+<div class="chat-box">
+    <div class="open">Text
+    <div class="box">
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { font: 13px Helvetica, Arial; }
+            form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 450px; }
+            form input { border: 0; padding: 10px; width: 90%; margin-right: 0.5%; }
+            form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+            #messages { list-style-type: none; margin: 0; padding: 0; }
+            #messages li { padding: 5px 10px; }
+            #messages li:nth-child(odd) { background: #eee; }
+          </style>
+        </head>
+        <body>
+          <ul id="messages"></ul>
+          <form action="">
+            <input id="m" autocomplete="off" /><button>Send</button>
+          </form>
+        
+    </div>
+      <div>
+  <div>
+    
+
+
+
+   
