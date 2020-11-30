@@ -1,0 +1,218 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: monospace;
+      }
+      h1 {
+        background-color: white;
+        display: inline-block;
+        font-size: 3em;
+        margin: 0;
+        padding: 14px;
+      }
+      h3 {
+        color: black;
+        font-size: 20px;
+        margin-top: 3px;
+        text-align: right;
+      }
+      #chatbox {
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+        margin-top: 60px;
+      }
+      #userInput {
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        margin-top: 60px;
+      }
+      #textInput {
+        width: 100%;
+        border: none;
+        border-bottom: 3px solid black;
+        font-family: monospace;
+        font-size: 17px;
+      }
+      .userText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: right;
+        line-height: 30px;
+      }
+      .userText span {
+        background-color: #808080;
+        padding: 10px;
+        border-radius: 2px;
+      }
+      .botText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: left;
+        line-height: 30px;
+      }
+      .botText span {
+        background-color: #4169e1;
+        padding: 10px;
+        border-radius: 2px;
+      }
+      #tidbit {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+      }
+      .boxed {
+        margin-left: auto;
+        width: 35%;
+        margin-top: 60px;
+        border: 3px solid green;
+      }
+      .box {
+        border: 3px solid black;
+      }
+      body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 50px;
+}
+  
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 40px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.chat-box{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.box{
+    transition: height 1s ease-out;
+    width: 400px;
+    height: 0px;
+    background: rgb(255, 255, 255);
+    z-index: 9999;
+}
+.open:hover>.box{
+  height:500px;
+      transition: height 1s ease-out;
+}
+.open {
+    text-align: center;
+    font-size: 30px;
+    border: 2px solid #000107;
+    background: #111;
+    color: #818181;
+}
+    </style>
+</head>
+
+<body>
+    <center>
+      <h1>
+        Your AI Therapy ChatBot
+      </h1>
+    </center>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">About</a>
+      <a href="#">Home page</a>
+      <a href="#">COIVD-19 Cases By Zipcode</a>
+      <a href="#">Job Search</a>
+      <a href="#">Contact us</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+  
+  <script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "350px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  </script>
+
+    <img SRC="https://pro2-bar-s3-cdn-cf.myportfolio.com/cd563a40abc7237b6824a624776eb26d/102d262e-2af0-4da5-9c55-8e434b35a875.gif?h=c5cbc013320b9b4a93d3ebd9e3807919" class="center">
+
+    <div class="boxed">
+        <div id="chatbox">
+          <p class="botText">
+            <span>Hi! I'm Lily your AI ChatBot</span>
+          </p>
+        </div>
+        <div id="userInput">
+          <input id="textInput" type="text" name="msg" placeholder="Message" />
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+
+<script>
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document
+            .getElementById("userInput")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+            $("#chatbox").append(botHtml);
+            document
+              .getElementById("userInput")
+              .scrollIntoView({ block: "start", behavior: "smooth" });
+          });
+        }
+        $("#textInput").keypress(function(e) {
+          if (e.which == 13) {
+            getBotResponse();
+          }
+        });
+</script>
