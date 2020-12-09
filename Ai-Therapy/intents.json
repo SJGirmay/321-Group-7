@@ -1,33 +1,63 @@
 {"intents": [
 		{"tag": "greeting",
-	 	"patterns": ["Hi", "How are you", "Hey", "Hello", "Hey there", "Is anyone there", "Good day", "Whats up?"],
+	 	"patterns": ["Hello"],
 	 	"responses": ["Hi!", "Hello!", "Good to see you!", "Hi there, how can I help?"],
 	 	"context_set": ""
 		},
+		{"tag": "Sad",
+		"patterns":["I'm very upset"],
+		"responses":["Why are you upset?"],
+		"context_set":""
+		},
 		{"tag": "goodbye",
-	 	"patterns": ["cya", "See you later", "Goodbye", "I am leaving", "Have a good day"],
+	 	"patterns": ["Goodbye"],
 	 	"responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"],
 	 	"context_set": ""
 		},
 		{"tag": "age",
-	 	"patterns": ["how old", "how old is Lily", "what is you age", "how old are you", "age?"],
+	 	"patterns": ["how old are you"],
 	 	"responses": ["Never ask a woman's age!!"],
 	 	"context_set": ""
 		},
 		{"tag": "name",
-	 	"patterns": ["what is your name", "what should I call you", "whats your name?"],
+	 	"patterns": ["what is your name"],
 	 	"responses": ["You can call me Lily", "My name is Lily", "I'm Lily!"],
 	 	"context_set": ""	
-		}
-		{
-		 "tag": "sad",
-		 "patterns": ["i feel sad", "i feel alone", "i am so stressesed out", "i a am sick of everything", "i am depressed", "have no friend"],
-		 "responses": ["I am sorry to hear that", "You are a awsome person", "Oh I'm sorry"]
 		},
-		{
-		 "tag": "anger",
-		 "patterns": ["You are so annoying", "I hate it", "damn it", "crap", "you are stupid"],
-		 "responses": ["Be nice!", "Calm down my friend", "Don't be mean"]
+		{"tag": "Thank",
+		"patterns": ["Thank you"],
+		"responses": ["You're welcome"],
+		"context_set":""
+		},
+		{"tag": "Nice",
+		"patterns":["You're very nice Bot"],
+		"responses": ["Thank you!"],
+		"context_set":""	
+		},
+		{"tag":"Mad",
+		"patterns":["You're Crazy"],
+		"responses":["I'm not Crazy I'm a Bot"],
+		"context_set":""
+		},
+		{"tag": "hopeless",
+		"patterns": ["I am a loser"],
+	 	"responses": ["No you're not a loser and you should never think like that."],
+	 	"context_set": ""	
+		},
+		{"tag": "depressed",
+	 	"patterns": ["I don't want to live anymore"],
+	 	"responses": ["I am sorry that you feel like that!\n I think online therapy can help you better!\n https://www.betterhelp.com/helpme/?utm_source=AdWords&utm_medium=Search_PPC_c&utm_term=%2Btherapist+%2Bonline_b&utm_content=84619964788&network=g&placement=&target=&matchtype=b&utm_campaign=2061354637&ad_type=text&adposition=&gclid=Cj0KCQjwxNT8BRD9ARIsAJ8S5xbWCxyjZID5gCqaimbpAh4y-12xGjhpWDEn7rkQouAa8JoLNN1Qcd4aAoiPEALw_wcB&not_found=1&gor=helpme"],
+	 	"context_set": ""	
+		},
+		{"tag": "Job",
+	 	"patterns": ["I am looking for Job"],
+	 	"responses": ["We can help you with that, just go to our job search platform page by clicking here, and find your dream job"],
+	 	"context_set": ""
+		},
+		{"tag": "COVID-19",
+	 	"patterns": ["How can I find out the number of COVID-19 cases in my area"],
+	 	"responses": ["Click here to find out the number of cases in your area"],
+	 	"context_set": ""
 		}
 	]
 }
