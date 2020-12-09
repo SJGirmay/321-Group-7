@@ -99,107 +99,51 @@ input { width: 200px; border: 1px solid #000; padding: 5px; }
     </div>
 
 <form action="PayslipServlet" method="get">
+  <center>
   <table>
-    <tr style="text-align: left; font-size: 30px"> Search
+    <tr style="text-align: left; font-size: 30px">
     <td><input id="country" type="text" name="Country" placeholder="Country" /></td>
     <td><input id="state" type="text" name="state" placeholder="State" /></td>
     <td><input id="city" type="text" name="city" placeholder="City" /></td>
     <td><input id="zipcode" type="text" name="zipcode" placeholder="Zipcode" /></td>
+    <td><span id="result"></span>
+    <input type="button" value="Search" onClick="pr()">
+    </td>
     </tr>
   </table>
-  <span id="result"></span>
-    <br>
-    <input type="button" value="Search" onClick="pr()">
+    </center>
 </form> 
+  <center>
+  <table style="border-spacing: 15px;">
+    <tr style="text-align: center; font-size: 20px; 
+                background-color:lightblue;
+                width: 300px; height: 100px;">
+    <td>Active<h3 style="font-size: 30px;"> {{ data['active'] }}</h3></td>
+    <td>Cases<h3 style="font-size: 30px;"> {{ data['cases']}}</h3></td>
+    <td>Cases Per One Million <h3 style="font-size: 30px;">{{ data['casesPerOneMillion']}}</h3></td>
+    <td>Deaths <h3 style="font-size: 30px;">{{ data['deaths']}}</h3></td>
+    <td>Death Per One Million<h3 style="font-size: 30px;"> 
+    {{ data['deathsPerOneMillion']}}</h3> </td>
+  </tr>
+    <tr style="text-align: center; font-size: 20px; 
+                background-color:lightblue;
+                width: 300px; height: 100px;">
+    <td>Populations<h3 style="font-size: 30px;"> {{ data['population']}}</h3></td>
+    <td>Recovered <h3 style="font-size: 30px;">{{ data['recovered']}}</h3></td>
+    <td>State<h3 style="font-size: 30px;"> {{ data['state']}}</h3></td>
+    <td>Tests <h3 style="font-size: 30px;">{{ data['tests']}}</h3></td>
+    <td>Tests Per One Million <h3 style="font-size: 30px;"> {{ data['testsPerOneMillion']}}</h3> </td>
+  </tr>
+    <tr style="text-align: center; font-size: 20px; 
+                background-color:lightblue;
+                width: 300px; height: 100px;">
+    <td>Today's Cases <h3 style="font-size: 30px;">{{ data['todayCases']}}</h3> </td>
+    <td>Today's Deaths <h3 style="font-size: 30px;">{{ data['todayDeaths']}}</h3></td>
+    <td>Updated <h3 style="font-size: 30px;">{{ data['updated']}}</h3></td>
+    </tr>
+  </table>
+</center>
     
-    <div style="background-color: lightblue;
-        width: 300px;text-align: center;
-        padding: 25px; display: inline-block;">
-        Active: {{ data['active'] }}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Cases:  {{ data['cases']}}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Cases Per One Million: {{ data['casesPerOneMillion']}}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Deaths: {{ data['deaths']}} 
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Death Per One Million: {{ data['deathsPerOneMillion']}}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Populations: {{ data['population']}}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Recovered: {{ data['recovered']}}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      State: {{ data['state']}}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Tests: {{ data['tests']}}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      ests Per One Million: {{ data['testsPerOneMillion']}}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Today's Cases: {{ data['todayCases']}}
-    </div>
-
-    
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Today's Deaths: {{ data['todayDeaths']}}
-    </div>
-
-    <div style="background-color: lightblue;
-      width: 300px; text-align: center;
-      padding: 25px; display: inline-block;">
-      Updated: {{ data['updated']}}
-    </div>
 
 </body>
 
