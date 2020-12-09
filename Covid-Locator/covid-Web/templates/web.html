@@ -78,6 +78,9 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+label { width: 200px; float: left; margin: 0 20px 0 0; }
+span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
+input { width: 200px; border: 1px solid #000; padding: 5px; }
 
 </style>
 </head>
@@ -95,21 +98,110 @@
       <a href="#Contact us">Contact us</a></li>
     </div>
 
-    <h4> This is the JSON data received from flask app:</h4>
-    <p> Active: {{ data['active'] }} </p>
-    <p> Cases: {{ data['cases']}} </p>
-    <p> Cases Per One Million: {{ data['casesPerOneMillion']}} </p>
-    <p> Deaths: {{ data['deaths']}} </p>
-    <p> Death Per One Million: {{ data['deathsPerOneMillion']}} </p>
-    <p> Populations: {{ data['population']}} </p>
-    <p> Recovered: {{ data['recovered']}} </p>
-    <p> State: {{ data['state']}} </p>
-    <p> Tests: {{ data['tests']}} </p>
-    <p> Tests Per One Million: {{ data['testsPerOneMillion']}} </p>
-    <p> Today's Cases: {{ data['todayCases']}} </p>
-    <p> Today's DDeaths: {{ data['todayDeaths']}} </p>
-    <p> Updated: {{ data['updated']}} </p>
+<form action="PayslipServlet" method="get">
+  <table>
+    <tr style="text-align: left; font-size: 30px"> Search
+    <td><input id="country" type="text" name="Country" placeholder="Country" /></td>
+    <td><input id="state" type="text" name="state" placeholder="State" /></td>
+    <td><input id="city" type="text" name="city" placeholder="City" /></td>
+    <td><input id="zipcode" type="text" name="zipcode" placeholder="Zipcode" /></td>
+    </tr>
+  </table>
+  <span id="result"></span>
+    <br>
+    <input type="button" value="Search" onClick="pr()">
+</form> 
+    
+    <div style="background-color: lightblue;
+        width: 300px;text-align: center;
+        padding: 25px; display: inline-block;">
+        Active: {{ data['active'] }}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Cases:  {{ data['cases']}}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Cases Per One Million: {{ data['casesPerOneMillion']}}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Deaths: {{ data['deaths']}} 
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Death Per One Million: {{ data['deathsPerOneMillion']}}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Populations: {{ data['population']}}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Recovered: {{ data['recovered']}}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      State: {{ data['state']}}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Tests: {{ data['tests']}}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      ests Per One Million: {{ data['testsPerOneMillion']}}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Today's Cases: {{ data['todayCases']}}
+    </div>
+
+    
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Today's Deaths: {{ data['todayDeaths']}}
+    </div>
+
+    <div style="background-color: lightblue;
+      width: 300px; text-align: center;
+      padding: 25px; display: inline-block;">
+      Updated: {{ data['updated']}}
+    </div>
 
 </body>
 
 </html>
+
