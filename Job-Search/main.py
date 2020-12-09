@@ -39,7 +39,7 @@ def summary_result(soup):
     for span in spans:
         summaries.append(span.text.strip())
     return(summaries)
-
+fh = open('available_jobs.txt', 'w')
 def findJobs(URL):
     if URL != '':
         #conducting a request of the stated URL above:
@@ -56,7 +56,9 @@ def findJobs(URL):
         string_final = '%-10s%-60s%s'
         # print(string_final % ('', 'Job title', 'Location', 'salary'))
         for i, (job, location) in enumerate(zip(jobs, locations)):
-            print(string_final % (i, job, location))
+             fh.write(string_final % (i, job, location))
+             fh.write('\n')
+            
 
 def PageGen(URL):
     pageUrls = []
@@ -75,11 +77,16 @@ URL = URLGen(country, job, location)
 #grab page Urls
 pageUrls = PageGen(URL)
 
+
+
 x = 1
 # find jobs
 string_final = '%-10s%-60s%s'
 print(string_final % ('', 'Job title', 'Location'))
+
 for page in pageUrls:
     print("Page "+str(x))
     findJobs(page)
     x = x + 1
+print("Awesome thanks for your input. We have created a text file with jobs in the area that could suit you.")
+fh.close()
