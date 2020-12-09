@@ -1,5 +1,5 @@
-from NationalMenu import *
-from StateMenu    import *
+from NationalMenu import NationalMenu
+from StateMenu    import StateMenu
 from CountyMenu  import *
 def MainMenu():
   
@@ -11,16 +11,15 @@ def MainMenu():
 
   resp = input('Please Select an Option ')
   if(resp == "1"):
-    print("NationalMenu()")
+    NationalMenu()
   elif(resp == "2"):
     StateMenu()
   elif(resp == "3"):
-    print("CountyMenu()")
+    CountyMenu()
   elif(resp == "4"):
     quit()
   else:
     print("Not a valid option. Please select a Valid option (1,2,3,4).")
 
-#def Main():
-#while 1:
-  #MainMenu()
+MainMenu()
+
