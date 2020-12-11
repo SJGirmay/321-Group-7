@@ -54,7 +54,6 @@ def StateMenu():
     if inputState != 0: 
         result = (baseUrl + inputState + "?yesterday=true")
         response = pip._vendor.requests.get(result)
-        #jprint(response.json())
         stateDataPrint(response.json())
     if inputState == 0:
         return 0
