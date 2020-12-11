@@ -35,6 +35,19 @@ def parser(resp):
         else:
             resp = input('Invalid Input. Please Enter valid State or State Abreviation or q/quit ')
 
+def parserLower(resp):
+     while 1:   
+        resp1 = resp.lower()
+        resp2 = resp.upper()
+        if(resp1 in StatesLower):
+            return(StatesLower.index(resp1))
+        elif(resp2 in StateAbv):
+            return(StatesLower[StateAbv.index(resp2)])
+        elif(resp1 == 'q' or resp1 == 'quit'):
+            return 0
+        else:
+            resp = input('Invalid Input. Please Enter valid State or State Abreviation or q/quit ')
+
 def StateMenu():
     resp = input('Please enter a valid state or state Abreviation. To quit, enter q or quit. ')
     inputState = parser(resp)

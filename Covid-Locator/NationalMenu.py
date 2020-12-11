@@ -5,6 +5,8 @@ from Parser import jprint
 natURL = "https://disease.sh/v3/covid-19/countries/USA?yesterday=true&twoDaysAgo=true&strict=true"
 def NationalMenu():
     response = pip._vendor.requests.get(natURL)
+    y = json.loads(response)
+
     jprint(response.json())
 
 NationalMenu()
