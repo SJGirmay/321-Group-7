@@ -35,7 +35,7 @@ def CountyMenu():
                 print("State is " + county["province"])
                 print("County is " + county["county"])
                 print(county["stats"])
-                return county["stats"]
+                return "Success"
     except:
         return print("No Counties Found")
     return None
@@ -52,3 +52,6 @@ def parserLower(resp):
     else:
         resp = input('Invalid Input. Please Enter valid State or State Abreviation or q/quit ')
         return(parserLower(resp))
+        
+
+#CountyMenu()
