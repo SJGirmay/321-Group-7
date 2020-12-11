@@ -87,7 +87,7 @@ input { width: 200px; border: 1px solid #000; padding: 5px; }
 
 <body>
     <h1 style="font-size:60px;">
-      COVID-19 Tracker
+      COVID-19 Tracker: U.S Averages
     </h1>
     <div class="navbar" style="text-align:center;">
       <a class="active" href="#home">home</a>
@@ -97,7 +97,6 @@ input { width: 200px; border: 1px solid #000; padding: 5px; }
       <a href="#AI-chatbot">AI Therapy ChatBot</a>
       <a href="#Contact us">Contact us</a></li>
     </div>
-<!-- Removed country and City. It is U.S based. -->
 <form action="PayslipServlet" method="get">
   <center>
   <table>
@@ -111,9 +110,7 @@ input { width: 200px; border: 1px solid #000; padding: 5px; }
 </form> 
   <center>
   <table style="border-spacing: 15px;">
-    <tr style="text-align: center; font-size: 20px; 
-                background-color:lightblue;
-                width: 300px; height: 100px;">
+    <tr style="text-align: center; font-size: 20px; background-color:lightblue; width: 300px; height: 100px;">
     <td>Active<h3 style="font-size: 30px;"> {{ data['active'] }}</h3></td>
     <td>Cases<h3 style="font-size: 30px;"> {{ data['cases']}}</h3></td>
     <td>Cases Per One Million <h3 style="font-size: 30px;">{{ data['casesPerOneMillion']}}</h3></td>
@@ -121,21 +118,16 @@ input { width: 200px; border: 1px solid #000; padding: 5px; }
     <td>Death Per One Million<h3 style="font-size: 30px;"> 
     {{ data['deathsPerOneMillion']}}</h3> </td>
   </tr>
-    <tr style="text-align: center; font-size: 20px; 
-                background-color:lightblue;
-                width: 300px; height: 100px;">
+    <tr style="text-align: center; font-size: 20px; background-color:lightblue; width: 300px; height: 100px;">
     <td>Populations<h3 style="font-size: 30px;"> {{ data['population']}}</h3></td>
     <td>Recovered <h3 style="font-size: 30px;">{{ data['recovered']}}</h3></td>
     <td>State<h3 style="font-size: 30px;"> {{ data['state']}}</h3></td>
     <td>Tests <h3 style="font-size: 30px;">{{ data['tests']}}</h3></td>
     <td>Tests Per One Million <h3 style="font-size: 30px;"> {{ data['testsPerOneMillion']}}</h3> </td>
   </tr>
-    <tr style="text-align: center; font-size: 20px; 
-                background-color:lightblue;
-                width: 300px; height: 100px;">
+    <tr style="text-align: center; font-size: 20px; background-color:lightblue;width: 300px; height: 100px;">
     <td>Today's Cases <h3 style="font-size: 30px;">{{ data['todayCases']}}</h3> </td>
     <td>Today's Deaths <h3 style="font-size: 30px;">{{ data['todayDeaths']}}</h3></td>
-    <td>Updated <h3 style="font-size: 30px;">{{ data['updated']}}</h3></td>
     </tr>
   </table>
 </center>

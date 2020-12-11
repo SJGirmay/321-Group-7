@@ -31,7 +31,6 @@ def nationalDataPrint(obj):
     print(text["todayCases"])
     print(text["todayRecovered"])
     print(text["todayDeaths"])
-    print(text["updated"])
 
 def stateDataPrint(obj):
     resp = json.dumps(obj)
@@ -48,14 +47,14 @@ def stateDataPrint(obj):
     print(text["todayCases"])
     print(text["todayDeaths"])
 
-def countyDataPrint(obj):
-    resp = json.dumps(obj)
-    text = json.loads(resp)
-    print(text["province"])
-    print(text["county"])
-    print(text["confirmed"])
-    print(text["deaths"])
-    print(text["updatedAt"])
+#def countyDataPrint(obj):
+    ##resp = json.dumps(obj)
+    #text = json.loads(resp)
+    #print(text["province"])
+    #print(text["county"])
+    #print(text["confirmed"])
+    #print(text["deaths"])
+    #print(text["updatedAt"])
 
     
 
