@@ -6,7 +6,7 @@ natURL = "https://disease.sh/v3/covid-19/countries/USA?yesterday=true&twoDaysAgo
 #"https://disease.sh/assets/img/flags/us.png", Keep this for HTML
 def NationalMenu():
     response = pip._vendor.requests.get(natURL)
-    jprint(response.json())
+    #jprint(response.json())
     nationalDataPrint(response.json())
 
-#NationalMenu()
+NationalMenu()
