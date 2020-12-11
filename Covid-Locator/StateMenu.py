@@ -1,6 +1,6 @@
 import pip._vendor.requests
 import json
-from Parser import *
+from Parser import jprint, stateDataPrint
 #This Data comes from Worldometers
 baseUrl = "https://disease.sh/v3/covid-19/states/"
 
@@ -52,8 +52,10 @@ def StateMenu():
     resp = input('Please enter a valid state or state Abreviation. To quit, enter q or quit. ')
     inputState = parser(resp)
     if inputState != 0: 
-        result = (baseUrl + inputState)
+        result = (baseUrl + inputState + "?yesterday=true")
         response = pip._vendor.requests.get(result)
         jprint(response.json())
     if inputState == 0:
         return 0
+
+StateMenu()
