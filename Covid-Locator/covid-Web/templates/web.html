@@ -97,15 +97,13 @@ input { width: 200px; border: 1px solid #000; padding: 5px; }
       <a href="#AI-chatbot">AI Therapy ChatBot</a>
       <a href="#Contact us">Contact us</a></li>
     </div>
-
+<!-- Removed country and City. It is U.S based. -->
 <form action="PayslipServlet" method="get">
   <center>
   <table>
     <tr style="text-align: left; font-size: 30px">
-    <td><input id="country" type="text" name="Country" placeholder="Country" /></td>
     <td><input id="state" type="text" name="state" placeholder="State" /></td>
-    <td><input id="city" type="text" name="city" placeholder="City" /></td>
-    <td><input id="zipcode" type="text" name="zipcode" placeholder="Zipcode" /></td>
+    <td><input id="county" type="county" name="county" placeholder="county" /></td>
     <td><span id="result"></span>
     <input type="button" value="Search" onClick="pr()">
     </td>
