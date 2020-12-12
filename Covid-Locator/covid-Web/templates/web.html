@@ -103,47 +103,16 @@ input { width: 200px; border: 1px solid #000; padding: 5px; }
   <center>
   <table>
     <tr style="text-align: left; font-size: 30px">
-    <td><input id="state" type="text" name="state" placeholder="State" /></td>
-    <td><input id="county" type="county" name="county" placeholder="County" /></td>
-    <td><span id="result"></span>
-    <input type="button" value="Search" onClick="pr()">
+    <input type="button" value="National Statistics" onClick="nationalPage.html">
+    <input type="button" value="State Statistics" onClick="statePage.html">
+    <input type="button" value="County Statistics" onClick="countyPage.html">
     </td>
     </tr>
   </table>
     </center>
 </form> 
-  <center>
-  <table style="border-spacing: 15px;">
-    <tr style="text-align: center; font-size: 20px; 
-                background-color:lightblue;
-                width: 300px; height: 100px;">
-    <td>Active<h3 style="font-size: 30px;"> {{ data['active'] }}</h3></td>
-    <td>Cases<h3 style="font-size: 30px;"> {{ data['cases']}}</h3></td>
-    <td>Cases Per One Million <h3 style="font-size: 30px;">{{ data['casesPerOneMillion']}}</h3></td>
-    <td>Deaths <h3 style="font-size: 30px;">{{ data['deaths']}}</h3></td>
-    <td>Death Per One Million<h3 style="font-size: 30px;"> 
-    {{ data['deathsPerOneMillion']}}</h3> </td>
-  </tr>
-    <tr style="text-align: center; font-size: 20px; 
-                background-color:lightblue;
-                width: 300px; height: 100px;">
-    <td>Populations<h3 style="font-size: 30px;"> {{ data['population']}}</h3></td>
-    <td>Recovered <h3 style="font-size: 30px;">{{ data['recovered']}}</h3></td>
-    <td>State<h3 style="font-size: 30px;"> {{ data['state']}}</h3></td>
-    <td>Tests <h3 style="font-size: 30px;">{{ data['tests']}}</h3></td>
-    <td>Tests Per One Million <h3 style="font-size: 30px;"> {{ data['testsPerOneMillion']}}</h3> </td>
-  </tr>
-    <tr style="text-align: center; font-size: 20px; 
-                background-color:lightblue;
-                width: 300px; height: 100px;">
-    <td>Today's Cases <h3 style="font-size: 30px;">{{ data['todayCases']}}</h3> </td>
-    <td>Today's Deaths <h3 style="font-size: 30px;">{{ data['todayDeaths']}}</h3></td>
-    <td>Updated <h3 style="font-size: 30px;">{{ data['updated']}}</h3></td>
-    </tr>
-  </table>
-</center>
-    
 
+  
 </body>
 
 </html>

@@ -5,67 +5,56 @@ def jprint(obj):
     text = json.dumps(obj, sort_keys=True, indent=4)
     print(text)
 
+def stateataPrint(obj):
+    resp = json.dumps(obj)
+    text = json.loads(resp)
+    print("State:" +text["state"])
+    print("Population:" +text["population"])
+    print("Active:" +text["active"])
+    print("Cases:" +text["cases"])
+    print("Cases Today:" +text["todayCases"])
+    print("Cases Per One Million:" +text["casesPerOneMillion"])
+    print("Deaths:" +text["deaths"]) 
+    print("Deaths Today:" +text["todayDeaths"])
+    print("Deaths Per One Million:" +text["deathsPerOneMillion"])
+    print("Recovered:" +text["recovered"])
+    print("Recovered Today:" +text["todayRecovered"])
+    print("Recovered Per One Million:" +text["recoveredPerOneMillion"])
+
+
 def nationalDataPrint(obj):
     resp = json.dumps(obj)
     text = json.loads(resp)
-    print(text["population"])
-    print(text["active"])#Total
-    print(text["activePerOneMillion"])
+    print("Population:" + str(text["population"]))
+    print("Active:" +str(text["active"]))
+    print("ActivePerOneMillion:" +str(text["activePerOneMillion"]))
     
-    print(text["cases"])#Total
-    print(text["todayCases"])
-    print(text["casesPerOneMillion"])
-    print(text["oneCasePerPeople"])
+    print("Cases:" +str(text["cases"]))
+    print("Cases Today:" +str(text["todayCases"]))
+    print("Cases Per One Million:" +str(text["casesPerOneMillion"]))
+    print("One Case Per People:" +str(text["oneCasePerPeople"]))
     
-    print(text["deaths"]) #Total
-    print(text["todayDeaths"])
-    print(text["deathsPerOneMillion"])
-    print(text["oneDeathPerPeople"])
+    print("Deaths:" +str(text["deaths"])) 
+    print("Deaths Today:" +str(text["todayDeaths"]))
+    print("Deaths Per One Million:" +str(text["deathsPerOneMillion"]))
+    print("One Death Per People:" +str(text["oneDeathPerPeople"]))
 
-    print(text["recovered"])#Total
-    print(text["todayRecovered"])
-    print(text["recoveredPerOneMillion"])
+    print("Recovered:" +str(text["recovered"]))
+    print("Recovered Today:" +str(text["todayRecovered"]))
+    print("Recovered Per One Million:" +str(text["recoveredPerOneMillion"]))
 
-    print(text["tests"])#Total
-    print(text["testsPerOneMillion"])
-    print(text["oneTestPerPeople"])
+    print("Tests:" +str(text["tests"]))
+    print("Tests Per One Million:" +str(text["testsPerOneMillion"]))
+    print("One Test Per People:" +str(text["oneTestPerPeople"]))
 
-    print(text["critical"])#Total
-    print(text["criticalPerOneMillion"])
+    #print("Critical:" + str(text["critical"])
+    #print(text["criticalPerOneMillion"])
+    #"Critical Per One Million:" + 
 
-def stateDataPrint(obj):
-    resp = json.dumps(obj)
-    text = json.loads(resp)
-    
-    print(text["state"])
-    print(text["population"])#Total
-    print(text["active"])#Total
-    
-    print(text["cases"])#Total
-    print(text["todayCases"])
-    print(text["casesPerOneMillion"])
 
-    print(text["deaths"])#Total
-    print(text["todayDeaths"])
-    print(text["deathsPerOneMillion"])
-    
-    print(text["recovered"])#Total
-    print(text["tests"])#Total
-    print(text["testsPerOneMillion"])
-    
-    
 
-#def countyDataPrint(obj):
-    ##resp = json.dumps(obj)
-    #text = json.loads(resp)
     
-    #print(text["province"])
-    #print(text["county"])
     
-    #print(text["confirmed"])
-    #print(text["deaths"])
-    
-    #print(text["updatedAt"])
 
     
 

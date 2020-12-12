@@ -1,8 +1,7 @@
 import pip._vendor.requests
 import json
 from Parser import jprint,nationalDataPrint
-#from flask import Flask, render_template, request
-app = Flask(__name__)
+
 
 #This Data comes from Worldometers
 natURL = "https://disease.sh/v3/covid-19/countries/USA?yesterday=true&twoDaysAgo=true&strict=true"

@@ -1,6 +1,6 @@
 from NationalMenu import NationalMenu
 from StateMenu    import StateMenu
-from CountyMenu  import *
+from CountyMenu  import CountyMenu
 def MainMenu():
   
   print("Main Menu")
@@ -20,4 +20,7 @@ def MainMenu():
     quit()
   else:
     print("Not a valid option. Please select a Valid option (1,2,3,4).")
+
+while 1:
+  MainMenu()
 

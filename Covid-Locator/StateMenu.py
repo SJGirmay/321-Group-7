@@ -57,5 +57,3 @@ def StateMenu():
         stateDataPrint(response.json())
     if inputState == 0:
         return 0
-
-#StateMenu()

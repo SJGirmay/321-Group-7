@@ -1,5 +1,5 @@
 import json
-import requests
+import pip._vendor.requests
 #This Data comes from John Hopkins
 baseURL = "https://disease.sh/v3/covid-19/jhucsse/counties/"
 
@@ -27,7 +27,7 @@ def CountyMenu():
     inputState = parserLower(input('Please enter a valid state or state Abreviation. To quit, enter q or quit. '))
     inputCounty = input('Please enter a valid County. To quit, enter q or quit. ')
     url = baseURL + inputCounty
-    resp = requests.get(url)
+    resp = pip._vendor.requests.get(url)
     try: 
         for county in resp.json():
             if county["province"] == inputState:
