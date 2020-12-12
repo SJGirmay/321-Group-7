@@ -21,5 +21,3 @@ def MainMenu():
   else:
     print("Not a valid option. Please select a Valid option (1,2,3,4).")
 
-MainMenu()
-
