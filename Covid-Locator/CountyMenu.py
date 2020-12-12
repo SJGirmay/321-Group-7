@@ -1,5 +1,5 @@
 import json
-import pip._vendor.requests
+import requests
 #This Data comes from John Hopkins
 baseURL = "https://disease.sh/v3/covid-19/jhucsse/counties/"
 
@@ -24,10 +24,10 @@ States = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Conne
 #Returns confrimed, deaths, recovered, and cases for a given state and county
 #Returns null if state/county are invalid
 def CountyMenu():
-    inputState = parserLower(input('Please enter a valid state or state Abreviation. To quit, enter q or quit. '))
+    inputState = parserLower(input('Please enter a valid state or state Abreviation. '))
     inputCounty = input('Please enter a valid County. To quit, enter q or quit. ')
     url = baseURL + inputCounty
-    resp = pip._vendor.requests.get(url)
+    resp = requests.get(url)
     try: 
         for county in resp.json():
             if county["province"] == inputState:
@@ -50,8 +50,8 @@ def parserLower(resp):
     elif(resp == 'q' or resp == 'quit'):
         return None
     else:
-        resp = input('Invalid Input. Please Enter valid State or State Abreviation or q/quit ')
-        return(parserLower(resp))
+        resp = input('Invalid Input. Please Enter valid State or State Abreviation ')
+        return (parserLower(resp))
         
 
-
+#CountyMenu()
