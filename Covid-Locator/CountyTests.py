@@ -25,7 +25,7 @@ class TestCounty(unittest.TestCase):
     def test_County5(self, mock_inputs):
         self.assertEqual(CountyMenu.CountyMenu(), "Success")
 
-    @patch('builtins.input', side_effect=['Alabama', 'Washing'])
+    @patch('builtins.input', side_effect=['Alabama', 'WW'])
     def test_County6(self, mock_inputs):
         self.assertEqual(CountyMenu.CountyMenu(), None)
 
@@ -33,7 +33,7 @@ class TestCounty(unittest.TestCase):
     def test_County7(self, mock_inputs):
         self.assertEqual(CountyMenu.CountyMenu(), None)
 
-    @patch('builtins.input', side_effect=['FL', 'Washington'])
+    @patch('builtins.input', side_effect=['FL', 'Bay'])
     def test_County8(self, mock_inputs):
         self.assertEqual(CountyMenu.CountyMenu(), "Success")
     
