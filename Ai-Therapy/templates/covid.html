@@ -1,0 +1,237 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <title></title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: monospace;
+      }
+      h1 {
+        background-color: white;
+        display: inline-block;
+        font-size: 3em;
+        margin: 0;
+        padding: 14px;
+      }
+      h3 {
+        color: black;
+        font-size: 20px;
+        margin-top: 3px;
+        text-align: center;
+      }
+      .navbar {
+    overflow: hidden;
+    background-color:black;
+  }
+  
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: #900C3F;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: gray;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  label { width: 200px; float: left; margin: 0 20px 0 0; }
+  span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
+  input { width: 200px; border: 1px solid #000; padding: 5px; }
+  
+  </style>
+  </head>
+  
+  <body>
+      <h1 style="font-size:60px;">
+        COVID-19 Tracker
+      </h1>
+      <div class="navbar" style="text-align:center;">
+        <a class="active" href="/">home</a>
+        <a class="active" href="/about">About</a>
+        <a class="active" href="/index">Job Search Platform</a>
+        <a class="active" href="/covid">Covid-19 Tracker</a>
+        <a class="active" href="/AI">AI Therapy ChatBot</a>
+        <a class="active" href="/contact">Contact us</a></li>
+      </div>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-4 heading"></h1>
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="myList"></div>
+    <script src="./scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+</body>
+
+
+<script>
+    const api = 'https://disease.sh/v3/covid-19/historical/all?lastdays=90';
+
+const getData = async () => {
+  const response = await fetch(`${api}`);
+  if (response.ok) {
+    return await response.json();
+  } else {
+    return Promise.reject(response.status);
+  }
+};
+
+const result = getData();
+result
+  .then((data) => {
+    let date = Object.keys(data.cases);
+    let total = Object.values(data.cases);
+    let deaths = Object.values(data.deaths);
+    let recovered = Object.values(data.recovered);
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    let myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: date,
+        datasets: [
+          {
+            label: 'Total Cases',
+            data: total,
+            borderColor: 'rgba(255, 99, 132)',
+            fill: false,
+          },
+          {
+            label: 'Recovered Cases',
+            data: recovered,
+            borderColor: 'rgba(153, 102, 255, 1)',
+            fill: false,
+          },
+          {
+            label: 'Deaths',
+            data: deaths,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: 'Number of Cases',
+              },
+            },
+          ],
+          xAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: 'Date(DD/MM/YYYY)',
+              },
+            },
+          ],
+        },
+        title: {
+          display: true,
+          text: `Coronavirus Cases in the World for 90 Days`,
+        },
+      },
+    });
+  })
+  .catch((error) => {
+    console.log('Error: ', error);
+  });
+</script>
+
+
+
+</html>
+
+<center>
+    <table style="border-spacing: 15px;">
+      <tr style="text-align: center; font-size: 20px;
+                  border: 1px solid white; 
+                  background-color: gray;
+                  width: 300px; height: 100px;">
+      <td style= "border-spacing: 15px; border: 1px solid white;">Active <h3 style="font-size: 20px;"> {{ data['active'] }}</h3></td>
+      <td style= "border-spacing: 15px; border: 1px solid white;">Cases<h3 style="font-size: 20px;"> {{ data['cases']}}</h3></td>
+      <td style= "border-spacing: 15px; border: 1px solid white;">Cases Per One Million <h3 style="font-size: 20px;">{{ data['casesPerOneMillion']}}</h3></td>
+      <td style= "border-spacing: 15px; border: 1px solid white;">Deaths <h3 style="font-size: 20px;">{{ data['deaths']}}</h3></td>
+      <td style= "border-spacing: 15px; border: 1px solid white;">Death Per One Million<h3 style="font-size: 20px;"> 
+      {{ data['deathsPerOneMillion']}}</h3> </td>
+    </tr>
+      <tr style="text-align: center; font-size: 20px; 
+                  border: 1px solid white;
+                  background-color: gray;
+                  width: 300px; height: 100px;">
+      <td style= "border-spacing: 15px; border: 1px solid white;">Populations<h3 style="font-size: 20px;"> {{ data['population']}}</h3></td>
+      <td style= "border-spacing: 15px;">Recovered <h3 style="font-size: 20px;">{{ data['recovered']}}</h3></td>
+      <td style= "border-spacing: 15px; border: 1px solid white;">Tests <h3 style="font-size: 20px;">{{ data['tests']}}</h3></td>
+      <td style= "border-spacing: 15px; border: 1px solid white;">Tests Per One Million <h3 style="font-size: 20px;"> {{ data['testsPerOneMillion']}}</h3> </td>
+      <td style= "border-spacing: 15px; border: 1px solid white;">Today's Cases <h3 style="font-size: 20px;">{{ data['todayCases']}}</h3> </td>
+    </tr>
+      <tr style="text-align: center; font-size: 20px;
+                  border: 1px solid white; 
+                  background-color: gray;
+                  width: 300px; height: 100px;">
+      <td style= "border-spacing: 15px; border: 1px solid white;">Today's Deaths <h3 style="font-size: 20px;">{{ data['todayDeaths']}}</h3></td>
+      <td style= "border-spacing: 15px; border: 2px solid white;">Updated <h3 style="font-size: 20px;">{{ data['updated']}}</h3></td>
+      </tr>
+    </table>
+  </center>
+
+  </body>
+  
+  </html>
