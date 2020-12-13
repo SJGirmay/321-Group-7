@@ -5,8 +5,13 @@
 	 	"context_set": ""
 		},
 		{"tag": "Sad",
-		"patterns":["I'm very upset"],
-		"responses":["Why are you upset?"],
+		"patterns":["Not so well"],
+		"responses":["Why not?"],
+		"context_set":""
+		},
+		{"tag": "ask",
+		"patterns": ["How are you doing"],
+		"responses": ["I'm doing well, how are you?"],
 		"context_set":""
 		},
 		{"tag": "goodbye",
