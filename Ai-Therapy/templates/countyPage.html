@@ -1,0 +1,141 @@
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+    body {
+      font-family: monospace;
+    }
+    h1 {
+      background-color: white;
+      display: inline-block;
+      font-size: 3em;
+      margin: 0;
+      padding: 14px;
+    }
+    h3 {
+      color: black;
+      font-size: 20px;
+      margin-top: 3px;
+      text-align: center;
+    }
+    .navbar {
+  overflow: hidden;
+  background-color:black;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: #900C3F;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: gray;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+label { width: 200px; float: left; margin: 0 20px 0 0; }
+span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
+input { width: 200px; border: 1px solid #000; padding: 5px; }
+
+</style>
+</head>
+
+<body>
+    <h1 style="font-size:60px;">
+      COVID-19 Tracker: State Search
+    </h1>
+    <div class="navbar" style="text-align:center;">
+      <a class="active" href="#home">home</a>
+      <a href="#about">About</a>
+      <a href="https://www.indeed.com">Job Search Platform</a>
+      <a href="https://covid.cdc.gov/covid-data-tracker/#cases_casesper100klast7days">Covid-19 Tracker</a>
+      <a href="#AI-chatbot">AI Therapy ChatBot</a>
+      <a href="#Contact us">Contact us</a></li>
+    </div>
+<!-- Removed country and City. It is U.S based. -->
+<form action="PayslipServlet" method="get">
+  <center>
+  <table>
+    <tr style="text-align: left; font-size: 30px">
+    <td><input id="state" type="text" name="state" placeholder="State" /></td>
+    <td><span id="result"></span>
+    <input type="button" value="Search" onClick="pr()">
+    </td>
+    </tr>
+  </table>
+    </center>
+</form> 
+  <center>
+  <table style="border-spacing: 15px;">
+    <tr style="text-align: center; font-size: 20px; background-color:lightblue;width: 300px; height: 100px;">
+      <td>Total Population<h3 style="font-size: 30px;"> {{ data['population'] }}</h3></td>
+      <td>Active Cases<h3 style="font-size: 30px;"> {{ data['active']}}</h3></td>
+      <td>Active Per One Million<h3 style="font-size: 30px;"> {{ data['activePerOneMillion']}}</h3></td>
+  </tr>
+      <tr style="text-align: center; font-size: 20px; background-color:lightblue;width: 300px; height: 100px;">
+      <td>Total Cases<h3 style="font-size: 30px;"> {{ data['cases']}}</h3></td>
+      <td>Cases Today <h3 style="font-size: 30px;">{{ data['todayCases']}}</h3></td>
+      <td>Cases Per One Million<h3 style="font-size: 30px;"> {{ data['casesPerOneMillion']}}</h3></td>
+  </tr>
+      <tr style="text-align: center; font-size: 20px; background-color:lightblue;width: 300px; height: 100px;">
+      <td>Total Deaths <h3 style="font-size: 30px;">{{ data['deaths']}}</h3></td>
+      <td>Deaths Today<h3 style="font-size: 30px;"> {{ data['todayDeaths']}}</h3> </td>
+      <td>Death Per One Million<h3 style="font-size: 30px;"> {{ data['deathsPerOneMillion']}}</h3> </td>
+  </tr>
+      <tr style="text-align: center; font-size: 20px; background-color:lightblue; width: 300px; height: 100px;">
+      <td>Total Recovered <h3 style="font-size: 30px;">{{ data['recovered']}}</h3></td>
+      <td>Total Tests <h3 style="font-size: 30px;">{{ data['tests']}}</h3></td>
+      <td>Tests Per One Million<h3 style="font-size: 30px;"> {{ data['testsPerOneMillion']}}</h3> </td>
+    </tr>
+  </table>
+</center>
+    
+
+</body>
+
+</html>
