@@ -1,3 +1,5 @@
+<html>
+
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <style>
@@ -17,141 +19,124 @@
       margin-top: 3px;
       text-align: center;
     }
-    #chatbox {
-      margin-left: auto;
-      margin-right: auto;
-      width: 80%;
-      margin-top: 60px;
-    }
-    #userInput {
-      margin-left: auto;
-      margin-right: auto;
-      width: 80%;
-      margin-top: 60px;
-    }
-    #textInput {
-      width: 100%;
-      border: none;
-      border-bottom: 3px solid black;
-      font-family: monospace;
-      font-size: 17px;
-    }
-    .userText {
-      color: white;
-      font-family: monospace;
-      font-size: 17px;
-      text-align: right;
-      line-height: 30px;
-    }
-    .userText span {
-      background-color: #808080;
-      padding: 10px;
-      border-radius: 2px;
-    }
-    .botText {
-      color: white;
-      font-family: monospace;
-      font-size: 17px;
-      text-align: left;
-      line-height: 30px;
-    }
-    .botText span {
-      background-color: #4169e1;
-      padding: 10px;
-      border-radius: 2px;
-    }
-    #tidbit {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 300px;
-    }
-    .boxed {
-      margin-left: auto;
-      margin-right: auto;
-      width: 60%;
-      margin-top: 60px;
-      border: 2px solid green;
-    }
-    .box {
-      border: 2px solid black;
-    }
+    .navbar {
+  overflow: hidden;
+  background-color:black;
+}
 
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #333333;
-    }
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-  li {
-    float: left;
-  }
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
 
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    font-size: 20px;
-    padding: 25px;
-    text-decoration: none;
-  }
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: #900C3F;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
 
-  li a:hover {
-    background-color: #111111;
-  }
-  </style>
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: gray;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+label { width: 200px; float: left; margin: 0 20px 0 0; }
+span { display: block; margin: 0 0 3px; font-size: 1.2em; font-weight: bold; }
+input { width: 200px; border: 1px solid #000; padding: 5px; }
+
+</style>
 </head>
 
 <body>
-  <center>
-    <h1 style="font-size:60px;">
-      AI Therapy ChatBot
+    <h1 style="font-size:80px; padding: 5px;">
+      CS321 Group 7
     </h1>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#Job Search Platform">Job Search Platform</a></li>
-      <li><a href="#Covid 19 Tracker">COVID-19 Tracker</a></li>
-      <li><a href="#Contact">Contact</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </center>
-<div class="box"></div>
-  <div class="boxed">
-    <div>
-      <div id="chatbox">
-        <p class="botText">
-          <span>Hi! I'm Lily your AI therapy Chatbot</span>
-        </p>
-      </div>
-      <div id="userInput">
-        <input id="textInput" type="text" name="msg" placeholder="Message" />
-      </div>
+    <div class="navbar" style="text-align:center;">
+      <a class="active" href="/">home</a>
+      <a class="active" href="/about">About</a>
+      <a class="active" href="/index">Job Search Platform</a>
+      <a class="active" href="/covid">Covid-19 Tracker</a>
+      <a class="active" href="/AI">AI Therapy ChatBot</a>
+      <a class="active" href="/contact">Contact us</a></li>
     </div>
-  </div>
-</body>
+        
+    </div>
 
-<script>
-  function getBotResponse() {
-    var rawText = $("#textInput").val();
-    var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
-    $("#textInput").val("");
-    $("#chatbox").append(userHtml);
-    document
-      .getElementById("userInput")
-      .scrollIntoView({ block: "start", behavior: "smooth" });
-    $.get("/get", { msg: rawText }).done(function(data) {
-      var botHtml = '<p class="botText"><span>' + data + "</span></p>";
-      $("#chatbox").append(botHtml);
-      document
-        .getElementById("userInput")
-        .scrollIntoView({ block: "start", behavior: "smooth" });
-    });
-  }
-  $("#textInput").keypress(function(e) {
-    if (e.which == 13) {
-      getBotResponse();
-    }
-  });
-</script>
+    <center>
+    <table style="margin-top: 60px;">
+        <tr>
+            <td style="font-size: 20px;"> We Can help you find a job</td>
+            <td style="font-size: 20px;"> You can track the number of Covid 19</td>
+            <td style="font-size: 20px;"> You can alway get help from our AI Therapy ChatBot</td>
+        </tr>
+        <tr>
+          <td> <img src="https://i.insider.com/5ef9f7082618b919053702c4?width=1136&format=jpeg" width="450" height="400">
+        </td> 
+        <td>
+            <img src="https://www.statnews.com/wp-content/uploads/2020/03/corona-tracker-social-image.png" width="450" height="400">
+        </td>
+        <td>
+            <img src="https://governmentciomedia.com/sites/default/files/styles/featured_article_image/public/2018-09/chatbots.jpg?itok=aElvvnQz" width="450" height="400">
+        </td> 
+        </tr>
+    </table>
+    </center>
+    <table style="width:100%; background-color: white">
+        <tr style="background-color: white;">
+        <br></br>
+        <div style="background-color:gainsboro; position: absolute; bottom: 5px;">Disclaimer: This is a fictitious organization. This website was created for a school project.</div>
+        </tr>
+        </table>
+    </body>
+    </html>
